@@ -36,8 +36,7 @@ public class SceneControl
         {
             dic_scene.Add(nameScene, sceneBase);
         }
-        //Debug.Log(SceneManager.GetActiveScene().name);
-        //Debug.Log(nameScene);
+        
         dic_scene[SceneManager.GetActiveScene().name].exitScene();
 
         #region popAllUI
