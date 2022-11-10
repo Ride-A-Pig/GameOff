@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class BasePanel 
 {
+    /// <summary>
+    /// 储存uiPanel的名字和加载路径信息
+    /// </summary>
     public UIType uIType;
+    /// <summary>
+    /// 当前ui在场景中绑定的物体
+    /// </summary>
     public GameObject activeObj;
 
     public BasePanel(UIType _uIType)
