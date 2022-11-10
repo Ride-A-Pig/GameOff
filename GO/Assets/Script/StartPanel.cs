@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartPanel : BasePanel
 {
@@ -28,8 +29,9 @@ public class StartPanel : BasePanel
     }
     private void changeScene()
     {
-        Scene1 scene1 = new Scene1();
-        SceneControl.getInstance().Load(Scene1.nameScene, scene1);
+        // Scene1 scene1 = new Scene1();
+        // SceneControl.getInstance().Load(Scene1.nameScene, scene1);
+        SceneManager.LoadScene("Assets/Scenes/horror_level.unity",LoadSceneMode.Single);
     }
     private void changeScene0()
     {

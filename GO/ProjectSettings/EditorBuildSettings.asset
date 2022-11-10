@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Laucher.unity
     guid: cab57ce5bab6f9b4eb03c291246c834f
+  - enabled: 1
+    path: Assets/Scenes/horror_level.unity
+    guid: e9b710597c999384ba0e24cb82e09864
   m_configObjects: {}
