@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class UIManager 
 {
     private Dictionary<string, GameObject> dic_ui;
-    private Stack<BasePanel> sta_ui;
+    public Stack<BasePanel> sta_ui;
     /// <summary>
     /// 场景下的画布
     /// </summary>

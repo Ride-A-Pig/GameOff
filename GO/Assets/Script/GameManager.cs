@@ -40,5 +40,18 @@ public class GameManager : MonoBehaviour
         uIManager.push(new StartPanel());
         //SceneControl.getInstance().Load(Scene0.nameScene, new Scene0());
     }
-
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(uIManager.sta_ui.Count>0&& uIManager.sta_ui.Peek().uIType.Name=="StartPanel")
+            {
+                uIManager.pop(false);
+            }
+            else
+            {
+                uIManager.push(new StartPanel());
+            }
+        }
+    }
 }

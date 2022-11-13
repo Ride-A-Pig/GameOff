@@ -20,6 +20,7 @@ public class StartPanel : BasePanel
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "CloseDD").onClick.AddListener(closeDD);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Load").onClick.AddListener(changeScene);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Load0").onClick.AddListener(changeScene0);
+        UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "ViewBtn").onClick.AddListener(view);
 
     }
     private void closeDD()
@@ -29,14 +30,18 @@ public class StartPanel : BasePanel
     }
     private void changeScene()
     {
-        // Scene1 scene1 = new Scene1();
-        // SceneControl.getInstance().Load(Scene1.nameScene, scene1);
-        SceneManager.LoadScene("Assets/Scenes/horror_level.unity",LoadSceneMode.Single);
+         Scene1 scene1 = new Scene1();
+         SceneControl.getInstance().Load(Scene1.nameScene, scene1);
+        //SceneManager.LoadScene("Assets/Scenes/horror_level.unity",LoadSceneMode.Single);
     }
     private void changeScene0()
     {
         Scene0 scene0 = new Scene0();
         SceneControl.getInstance().Load(Scene0.nameScene, scene0);
+    }
+    private void view()
+    {
+        UIManager.getInstance().push(new ViewPanel());
     }
     public override void onEnable()
     {
