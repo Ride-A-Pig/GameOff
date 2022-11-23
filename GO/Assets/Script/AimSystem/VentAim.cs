@@ -6,6 +6,8 @@ using DG.Tweening;
 public class VentAim : MonoBehaviour, IAimableObject
 {
     public Vector3 force;
+
+    private Sprite[] sprites;
     public void DoInteract()
     {
         //this.transform.rotation = Quaternion.Euler(90, 0, 1.483f);
@@ -14,22 +16,25 @@ public class VentAim : MonoBehaviour, IAimableObject
         rigi=this.gameObject.AddComponent<Rigidbody>();
         rigi.drag = 0;
         rigi.AddForce(force);
+        sprites = Resources.LoadAll<Sprite>("Vent");
+        StartCoroutine(EventPanel.playResult(sprites,2f));
+        
     }
 
     public void OnAimEnter()
     {
-        Debug.Log("Enter");
+        //Debug.Log("Enter");
     }
 
     public void OnAimExit()
     { 
 
-        Debug.Log("Exit");
+        //Debug.Log("Exit");
     }
 
     public void OnAimStay()
     {
-        Debug.Log("Stay");
+        //Debug.Log("Stay");
     }
     private void OnCollisionEnter(Collision collision)
     {

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     private SceneControl _sceneControl;
     public SceneControl sceneControl { get => _sceneControl; }
 
+    public Sprite[] sprites;
     private void Awake()
     {
         if(_instance==null)
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         uIManager.push(new StartPanel());
-        //SceneControl.getInstance().Load(Scene0.nameScene, new Scene0());
+        Application.targetFrameRate = 60;
     }
     private void Update()
     {

@@ -32,7 +32,7 @@ public class StartPanel : BasePanel
     {
          Scene1 scene1 = new Scene1();
          SceneControl.getInstance().Load(Scene1.nameScene, scene1);
-        //SceneManager.LoadScene("Assets/Scenes/horror_level.unity",LoadSceneMode.Single);
+         
     }
     private void changeScene0()
     {

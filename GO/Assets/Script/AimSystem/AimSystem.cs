@@ -57,6 +57,7 @@ public class AimSystem : MonoBehaviour
             if(Input.GetMouseButtonDown(0)&&canOpr)
             {
                 CurrentAimableObject?.DoInteract();
+                
             }
             
         }

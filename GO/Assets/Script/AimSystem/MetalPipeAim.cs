@@ -5,9 +5,13 @@ using DG.Tweening;
 
 public class MetalPipeAim : MonoBehaviour,IAimableObject
 {
+    private Sprite[] sprites;
     public void DoInteract()
     {
-        this.gameObject.AddComponent<Rigidbody>();
+        //this.gameObject.AddComponent<Rigidbody>();
+        sprites = Resources.LoadAll<Sprite>("Metal_Pipe");
+        //print("Metal");
+        StartCoroutine(EventPanel.playResult(sprites, 2f));
     }
 
     public void OnAimEnter()
