@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this);
-        uIManager.push(new StartPanel());
+        uIManager.push(new LoveScenePanel());
         Application.targetFrameRate = 60;
     }
     private void Update()
@@ -53,6 +53,18 @@ public class GameManager : MonoBehaviour
             else
             {
                 uIManager.push(new StartPanel());
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            if (uIManager.sta_ui.Count > 0 && uIManager.sta_ui.Peek().uIType.Name == "HorrorScenePanel")
+            {
+                uIManager.pop(true);
+            }
+            else
+            {
+                uIManager.pop(true);
+                uIManager.push(new HorrorScenePanel());
             }
         }
     }

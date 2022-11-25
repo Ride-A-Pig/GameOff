@@ -53,6 +53,7 @@ public class EventPanel : BasePanel
         foreach (var item in sprites)
         {
             image.sprite = item;
+
             while (image.color.a < 1)
             {
                 
@@ -60,6 +61,7 @@ public class EventPanel : BasePanel
                 yield return  new WaitForSeconds(0.005f);
             }
             yield return new WaitForSeconds(durationTime);
+
             while (image.color.a > 0)
             {
                 image.color = new Color(255, 255, 255, image.color.a - 0.01f);
@@ -76,23 +78,15 @@ public class EventPanel : BasePanel
     {
         AimSystem.Instance.canOpr = false;
         cg.alpha = 1;
+
         foreach (var item in sprites)
         {
             image.sprite = item;
             image.color = new Color(255, 255, 255, 1);
-            //while (image.color.a < 1)
-            //{
 
-            //    image.color = new Color(255, 255, 255, image.color.a + 0.01f);
-            //    yield return new WaitForSeconds(0.005f);
-            //}
-            //while (image.color.a > 0)
-            //{
-            //    image.color = new Color(255, 255, 255, image.color.a - 0.01f);
-            //    yield return new WaitForSeconds(0.005f);
-            //}
             yield return new WaitForSeconds(0.2f);
         }
+
         image.color = new Color(255, 255, 255, 0);
         cg.alpha = 0;
         image.sprite = null;
