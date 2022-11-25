@@ -26,13 +26,7 @@ public class LoveScenePanel : BasePanel
     private static string _path = @"Panel\LoveScenePanel";
     public static UIType uiType = new UIType(_name, _path);
 
-    public State curState;
-
-    private static Image image;
-    public static CanvasGroup cg;
-
-    public Sprite[] sprites;
-    public Sprite originImage;
+    
     public Dictionary<string, State> dicState = new Dictionary<string, State>
     {
         
@@ -76,73 +70,20 @@ public class LoveScenePanel : BasePanel
     {
         base.onDestory();
     }
-    #region play
-    public async void playResult(Sprite[] sprites, float durationTime)
-    {
-        onDestory();
-
-        foreach (var item in sprites)
-        {
-
-            cg.DOFade(0, durationTime);
-            await Task.Delay(TimeSpan.FromSeconds(durationTime));
-
-            image.sprite = item;
-
-            cg.DOFade(1, durationTime);
-            await Task.Delay(TimeSpan.FromSeconds(durationTime));
-        }
-
-        onStart();
-        restart(durationTime);
-        //image.sprite = originImage;
-    }
-    public async void restart(float durationTime)
-    {
-        onDestory();
-        cg.DOFade(0, durationTime);
-        await Task.Delay(TimeSpan.FromSeconds(durationTime));
-
-        image.sprite = originImage;
-
-        cg.DOFade(1, durationTime);
-        await Task.Delay(TimeSpan.FromSeconds(durationTime));
-        curState = null;
-        onStart();
-    }
-    public async void pass(Sprite[] sprites, float durationTime)
-    {
-        onDestory();
-
-        foreach (var item in sprites)
-        {
-
-            cg.DOFade(0, durationTime);
-            await Task.Delay(TimeSpan.FromSeconds(durationTime));
-
-            image.sprite = item;
-
-            cg.DOFade(1, durationTime);
-            await Task.Delay(TimeSpan.FromSeconds(durationTime));
-        }
-
-        onStart();
-        //image.sprite = originImage;
-    }
-    #endregion
+    
     #region ClickEvent
     public async void signClick()
     {
         if (curState == null)
         {
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点牌子");
-            playResult(sprites, 2);
+            pass(sprites, 2);
 
             curState = dicState["Sign"];
 
             await Task.Delay(TimeSpan.FromSeconds(4.5f));
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/换箭");
-            playResult(sprites, 2);
+            fali(sprites, 2);
 
         }
 
@@ -153,7 +94,7 @@ public class LoveScenePanel : BasePanel
         if (curState == null)
         {
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点课本");
-            playResult(sprites, 2);
+            pass(sprites, 2);
 
             curState = dicState["Book"];
 
@@ -161,9 +102,9 @@ public class LoveScenePanel : BasePanel
         else if (curState.name == "Sign")
         {
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/换箭");
-            playResult(sprites, 2);
+            fali(sprites, 2);
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点牌子+点课本");
-            playResult(sprites, 2);
+            fali(sprites, 2);
 
             curState = dicState["Book"];
         }
@@ -177,7 +118,7 @@ public class LoveScenePanel : BasePanel
             curState = dicState["Ball"];
 
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点球");
-            playResult(sprites, 2);
+            pass(sprites, 2);
 
 
         }
@@ -187,9 +128,9 @@ public class LoveScenePanel : BasePanel
             curState = dicState["Ball"];
 
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/换箭");
-            playResult(sprites, 2);
+            pass(sprites, 2);
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点牌子+点球");
-            playResult(sprites, 2);
+            fali(sprites, 2);
 
         }
 
@@ -202,7 +143,7 @@ public class LoveScenePanel : BasePanel
             curState = dicState["Ring"];
 
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点上课铃");
-            playResult(sprites, 2);
+            fali(sprites, 2);
 
 
         }

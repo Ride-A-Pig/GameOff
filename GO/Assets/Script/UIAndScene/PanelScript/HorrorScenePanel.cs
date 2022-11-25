@@ -13,13 +13,7 @@ public class HorrorScenePanel : BasePanel
     private static string _path = @"Panel\HorrorScenePanel";
     public static UIType uiType = new UIType(_name, _path);
 
-    public State curState;
-
-    private static Image image;
-    public static CanvasGroup cg;
-
-    public Sprite[] sprites;
-    public Sprite originImage;
+    
     public Dictionary<string, State> dicState = new Dictionary<string, State>
     {
 
@@ -65,60 +59,7 @@ public class HorrorScenePanel : BasePanel
     {
         base.onDestory();
     }
-    #region play
-    public async void playResult(Sprite[] sprites, float durationTime)
-    {
-        onDestory();
-
-        foreach (var item in sprites)
-        {
-
-            cg.DOFade(0, durationTime);
-            await Task.Delay(TimeSpan.FromSeconds(durationTime));
-
-            image.sprite = item;
-
-            cg.DOFade(1, durationTime);
-            await Task.Delay(TimeSpan.FromSeconds(durationTime));
-        }
-
-        onStart();
-        restart(durationTime);
-        //image.sprite = originImage;
-    }
-    public async void restart(float durationTime)
-    {
-        onDestory();
-        cg.DOFade(0, durationTime);
-        await Task.Delay(TimeSpan.FromSeconds(durationTime));
-
-        image.sprite = originImage;
-
-        cg.DOFade(1, durationTime);
-        await Task.Delay(TimeSpan.FromSeconds(durationTime));
-        curState = null;
-        onStart();
-    }
-    public async void pass(Sprite[] sprites, float durationTime)
-    {
-        onDestory();
-
-        foreach (var item in sprites)
-        {
-
-            cg.DOFade(0, durationTime);
-            await Task.Delay(TimeSpan.FromSeconds(durationTime));
-
-            image.sprite = item;
-
-            cg.DOFade(1, durationTime);
-            await Task.Delay(TimeSpan.FromSeconds(durationTime));
-        }
-
-        onStart();
-        //image.sprite = originImage;
-    }
-    #endregion
+    
     #region ClickEvent
     public  void waterPipeClick()
     {
@@ -127,9 +68,7 @@ public class HorrorScenePanel : BasePanel
             curState = dicState["Water_Pipe"];
 
             sprites = Resources.LoadAll<Sprite>("HorrorLevel/Water_Pipe");
-            playResult(sprites, 2);
-
-            
+            fali(sprites, 2);
 
         }
 
@@ -143,7 +82,7 @@ public class HorrorScenePanel : BasePanel
             curState = dicState["Vent"];
 
             sprites = Resources.LoadAll<Sprite>("HorrorLevel/Vent");
-            playResult(sprites, 2);
+            fali(sprites, 2);
         }
     }
 
@@ -154,7 +93,7 @@ public class HorrorScenePanel : BasePanel
             curState = dicState["Rat"];
 
             sprites = Resources.LoadAll<Sprite>("HorrorLevel/Rat");
-            playResult(sprites, 2);
+            fali(sprites, 2);
         }
     }
     public void metalPipeClick()
@@ -182,7 +121,7 @@ public class HorrorScenePanel : BasePanel
                 sprites[sprites.Length - i - 1] = tmp;
             }
 
-            playResult(sprites, 0.2f);
+            fali(sprites, 0.2f);
         }
        
 
