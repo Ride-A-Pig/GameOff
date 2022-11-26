@@ -24,6 +24,7 @@ public class BasePanel
 
     public Sprite[] sprites;
     public Sprite originImage;
+    public bool isPlaying=false;
 
     public BasePanel(UIType _uIType)
     {
@@ -50,8 +51,8 @@ public class BasePanel
     #region play
     public async void fali(Sprite[] sprites, float durationTime)
     {
-        onDestory();
-
+        //onDestory();
+        isPlaying = true;
         foreach (var item in sprites)
         {
 
@@ -64,13 +65,15 @@ public class BasePanel
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
         }
 
-        onStart();
+        //onStart();
         restart(durationTime);
+        GameManager._instance.timer = 0;
+        isPlaying = false;
         //image.sprite = originImage;
     }
-    public async void restart(float durationTime)
+    public virtual async void restart(float durationTime)
     {
-        onDestory();
+        //onDestory();
         cg.DOFade(0, durationTime);
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
@@ -78,13 +81,14 @@ public class BasePanel
 
         cg.DOFade(1, durationTime);
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
+
         curState = null;
-        onStart();
+        //onEnable();
     }
     public async void pass(Sprite[] sprites, float durationTime)
     {
-        onDestory();
-
+        //onDestory();
+        isPlaying = true;
         foreach (var item in sprites)
         {
 
@@ -96,9 +100,11 @@ public class BasePanel
             cg.DOFade(1, durationTime);
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
         }
-
-        onStart();
+        isPlaying = false;
+        //onEnable();
+        GameManager._instance.timer = 0;
         //image.sprite = originImage;
     }
+
     #endregion
 }

@@ -22,7 +22,13 @@ public class GameManager : MonoBehaviour
     private SceneControl _sceneControl;
     public SceneControl sceneControl { get => _sceneControl; }
 
-    public Sprite[] sprites;
+    public HorrorScenePanel horrorScenePanel;
+    public LoveScenePanel LoveScenePanel;
+    public DisasterScenePanel disasterScenePanel;
+
+    public float timer=0;
+    public float interval = 5f;
+
     private void Awake()
     {
         if(_instance==null)
@@ -39,7 +45,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this);
-        uIManager.push(new LoveScenePanel());
+        LoveScenePanel = new LoveScenePanel();
+        uIManager.push(LoveScenePanel);
         Application.targetFrameRate = 60;
     }
     private void Update()
@@ -60,12 +67,42 @@ public class GameManager : MonoBehaviour
             if (uIManager.sta_ui.Count > 0 && uIManager.sta_ui.Peek().uIType.Name == "HorrorScenePanel")
             {
                 uIManager.pop(true);
+                horrorScenePanel = null;
             }
             else
             {
                 uIManager.pop(true);
-                uIManager.push(new HorrorScenePanel());
+                horrorScenePanel = new HorrorScenePanel();
+                uIManager.push(horrorScenePanel);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (uIManager.sta_ui.Count > 0 && uIManager.sta_ui.Peek().uIType.Name == "DisasterScenePanel")
+            {
+                uIManager.pop(true);
+                disasterScenePanel = null;
+            }
+            else
+            {
+                uIManager.pop(true);
+                disasterScenePanel = new DisasterScenePanel();
+                uIManager.push(disasterScenePanel);
+            }
+        }
+        if(disasterScenePanel!=null&&disasterScenePanel.isPlaying==false)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            timer = 0;
+        }
+        //Debug.Log(timer);
+        if(timer>interval)
+        {
+            disasterScenePanel.doNothing();
+            timer = 0;
         }
     }
 }
