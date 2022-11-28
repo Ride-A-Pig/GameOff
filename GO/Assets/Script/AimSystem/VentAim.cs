@@ -19,6 +19,7 @@ public class VentAim : MonoBehaviour, IAimableObject
         sprites = Resources.LoadAll<Sprite>("Vent");
         StartCoroutine(EventPanel.playResult(sprites,2f));
         
+        
     }
 
     public void OnAimEnter()
