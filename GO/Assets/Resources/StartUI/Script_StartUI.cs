@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
-
 public class Script_StartUI : MonoBehaviour
 {
     [SerializeField] TMPro.TextMeshProUGUI TimeDisplay;
@@ -16,11 +15,14 @@ public class Script_StartUI : MonoBehaviour
     [SerializeField] public bool[] Level_Active = { true, false, false };
     [SerializeField] public GameObject[] Emails;
     [SerializeField] public bool[] Email_Active = { true, true, false, false, false };
+    [SerializeField] GameObject[] gameObjects = new GameObject[4];
 
     bool bTurnOffPanel = false;
     void Start()
     {
-        for(int i = 0; i < Emails.Length; i++)
+        findObj();
+
+        for (int i = 0; i < Emails.Length; i++)
         {
             Emails[i].SetActive(Email_Active[i]);
         }
@@ -28,6 +30,7 @@ public class Script_StartUI : MonoBehaviour
         {
             Level_Buttons[i].interactable = Level_Active[i];
         }
+
         RemotePage.SetActive(false);
         TurnOffPanel.SetActive(false);
         BrowserPage.SetActive(false);
@@ -109,20 +112,82 @@ public class Script_StartUI : MonoBehaviour
     {
         SFX.Play();
     }
-
+    #region Enter Scene
     public void OnClicked_Horror()
     {
         Debug.Log("Open Horror Level");
+        HorrorScenePanel horrorScenePanel = new HorrorScenePanel();
+        GameManager.getInstance().horrorScenePanel = horrorScenePanel;
+        UIManager.getInstance().push(horrorScenePanel);
+        
     }
 
     public void OnCLicked_Romance()
     {
         Debug.Log("Open Romance Level");
+        LoveScenePanel loveScenePanel = new LoveScenePanel();
+        GameManager.getInstance().LoveScenePanel = loveScenePanel;
+        UIManager.getInstance().push(loveScenePanel);
     }
-
+    
     public void OnCLicked_Disaster()
     {
         Debug.Log("Open Disaster Level");
+        DisasterScenePanel disasterScenePanel = new DisasterScenePanel();
+        GameManager.getInstance().disasterScenePanel = disasterScenePanel;
+        UIManager.getInstance().push(disasterScenePanel);
     }
+    #endregion
+    #region ExitScene
+    public void passHorror()
+    {
+        UIManager.getInstance().pop(true);
+        disableBtn(0, 1,false);
+    }
+    public void passLove()
+    {
+        UIManager.getInstance().pop(true);
+        disableBtn(1, 2,false);
+    }
+    public void passDisaster()
+    {
+        UIManager.getInstance().pop(true);
+        disableBtn(2, 3,true);
+    }
+    private void disableBtn(int curLevel,int nextLevel,bool isLast)
+    {
+        
+        Emails[curLevel+2].SetActive(true);
 
+        Level_Buttons[curLevel].interactable = false;
+        Level_Active[curLevel] = false;
+        if(!isLast)
+        {
+            Level_Active[nextLevel] = true;
+            Level_Buttons[nextLevel].interactable = true;
+        }
+        
+    }
+    private void findObj()
+    {
+
+        string[] s = new string[] {
+            "RemotePage",
+            "Apps",
+            "Background",
+            "TaskBar",
+        };
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            gameObjects[i] = GameObject.Find(s[i]);
+        }
+    }
+    public void clear(bool isEnterScene)
+    {
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            gameObjects[i].SetActive(!isEnterScene);
+        }
+    }
+    #endregion
 }

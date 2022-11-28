@@ -838,7 +838,7 @@ RectTransform:
   - {fileID: 946071710}
   - {fileID: 791720675}
   m_Father: {fileID: 1638568236}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1543,7 +1543,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3991,6 +3991,7 @@ GameObject:
   - component: {fileID: 1638568233}
   - component: {fileID: 1638568237}
   - component: {fileID: 1638568238}
+  - component: {fileID: 1638568239}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4074,9 +4075,9 @@ RectTransform:
   - {fileID: 639774382}
   - {fileID: 738611216}
   - {fileID: 615144541}
+  - {fileID: 466561090}
   - {fileID: 1996116453}
   - {fileID: 1970996417}
-  - {fileID: 466561090}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4115,6 +4116,11 @@ MonoBehaviour:
   - {fileID: 2078342843}
   - {fileID: 509740943}
   Email_Active: 0101000000
+  gameObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &1638568238
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4211,6 +4217,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1638568239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638568232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81eed16aac97fc348b833e6f50a97875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  script_StartUI: {fileID: 0}
+  timer: 0
+  interval: 5
 --- !u!1 &1666762064
 GameObject:
   m_ObjectHideFlags: 0
@@ -4703,7 +4724,7 @@ RectTransform:
   - {fileID: 483894128}
   - {fileID: 268831799}
   m_Father: {fileID: 1638568236}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4782,7 +4803,7 @@ RectTransform:
   - {fileID: 1480327849}
   - {fileID: 994731046}
   m_Father: {fileID: 1638568236}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

@@ -8,7 +8,7 @@ public class AudioMgr : MonoBehaviour
 {
     AudioSource bgmSource;
     AudioSource shotSource;
-    public static AudioMgr _instance;
+    private static AudioMgr _instance;
     public static AudioMgr Instance
     {
         get {
@@ -54,9 +54,13 @@ public class AudioMgr : MonoBehaviour
     {
         playBGM("‘÷ƒ—“Ù¿÷");
     }
-    public void playChangeBGM()
+    public void playChangeClip()
     {
         playClip("≥°æ∞«–ªª");
+    }
+    public void stop()
+    {
+        bgmSource.Stop();
     }
     /// <summary>
     /// ≤•∑≈“Ù–ß
@@ -67,5 +71,6 @@ public class AudioMgr : MonoBehaviour
         AudioClip clip = Resources.Load<AudioClip>("Audio/" + name);
         if(!shotSource.isPlaying)
         shotSource.PlayOneShot(clip);
+        
     }
 }

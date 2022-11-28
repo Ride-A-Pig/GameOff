@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public HorrorScenePanel horrorScenePanel;
     public LoveScenePanel LoveScenePanel;
     public DisasterScenePanel disasterScenePanel;
+    public Script_StartUI script_StartUI;
 
     public float timer=0;
     public float interval = 5f;
@@ -41,56 +42,16 @@ public class GameManager : MonoBehaviour
         }
         _uIManager = new UIManager();
         _sceneControl = new SceneControl();
+        script_StartUI = GetComponent<Script_StartUI>();
     }
     private void Start()
     {
         DontDestroyOnLoad(this);
-        LoveScenePanel = new LoveScenePanel();
-        uIManager.push(LoveScenePanel);
         Application.targetFrameRate = 60;
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(uIManager.sta_ui.Count>0&& uIManager.sta_ui.Peek().uIType.Name=="StartPanel")
-            {
-                uIManager.pop(false);
-            }
-            else
-            {
-                uIManager.push(new StartPanel());
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            if (uIManager.sta_ui.Count > 0 && uIManager.sta_ui.Peek().uIType.Name == "HorrorScenePanel")
-            {
-                uIManager.pop(true);
-                horrorScenePanel = null;
-            }
-            else
-            {
-                uIManager.pop(true);
-                horrorScenePanel = new HorrorScenePanel();
-                uIManager.push(horrorScenePanel);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            if (uIManager.sta_ui.Count > 0 && uIManager.sta_ui.Peek().uIType.Name == "DisasterScenePanel")
-            {
-                uIManager.pop(true);
-                disasterScenePanel = null;
-            }
-            else
-            {
-                uIManager.pop(true);
-                disasterScenePanel = new DisasterScenePanel();
-                uIManager.push(disasterScenePanel);
-            }
-        }
-        if(disasterScenePanel!=null&&disasterScenePanel.isPlaying==false)
+        if (disasterScenePanel != null && disasterScenePanel.isPlaying == false)
         {
             timer += Time.deltaTime;
         }
@@ -98,8 +59,8 @@ public class GameManager : MonoBehaviour
         {
             timer = 0;
         }
-        //Debug.Log(timer);
-        if(timer>interval)
+        Debug.Log(timer);
+        if (timer>interval)
         {
             disasterScenePanel.doNothing();
             timer = 0;

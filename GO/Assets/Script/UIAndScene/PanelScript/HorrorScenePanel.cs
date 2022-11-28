@@ -37,6 +37,8 @@ public class HorrorScenePanel : BasePanel
         cg = activeObj.GetComponent<CanvasGroup>();
         originImage = Resources.Load<Sprite>("Horror_base_scene");
 
+        AudioMgr.Instance.playHorrorBGM();
+
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Devil").onClick.AddListener(devilClick);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Metal_Pipe").onClick.AddListener(metalPipeClick);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Rat").onClick.AddListener(ratClick);
@@ -68,7 +70,7 @@ public class HorrorScenePanel : BasePanel
             curState = dicState["Water_Pipe"];
 
             sprites = Resources.LoadAll<Sprite>("HorrorLevel/Water_Pipe");
-            fali(sprites, 2);
+            fali(sprites);
 
         }
 
@@ -82,7 +84,7 @@ public class HorrorScenePanel : BasePanel
             curState = dicState["Vent"];
 
             sprites = Resources.LoadAll<Sprite>("HorrorLevel/Vent");
-            fali(sprites, 2);
+            fali(sprites);
         }
     }
 
@@ -93,7 +95,7 @@ public class HorrorScenePanel : BasePanel
             curState = dicState["Rat"];
 
             sprites = Resources.LoadAll<Sprite>("HorrorLevel/Rat");
-            fali(sprites, 2);
+            fali(sprites);
         }
     }
     public void metalPipeClick()
@@ -103,7 +105,8 @@ public class HorrorScenePanel : BasePanel
             curState = dicState["Metal_Pipe"];
 
             sprites = Resources.LoadAll<Sprite>("HorrorLevel/Metal_Pipe");
-            pass(sprites, 2);
+            success(sprites);
+            
         }
     }
     public void devilClick()
@@ -127,4 +130,28 @@ public class HorrorScenePanel : BasePanel
 
     }
     #endregion
+    public async void success(Sprite[] sprites, float durationTime=0.1f)
+    {
+        //onDestory();
+        if (isPlaying) return;
+        isPlaying = true;
+        foreach (var item in sprites)
+        {
+
+            //cg.DOFade(0, durationTime);
+            cg.alpha = 0;
+            await Task.Delay(TimeSpan.FromSeconds(durationTime));
+
+            image.sprite = item;
+
+            //cg.DOFade(1, durationTime);
+            cg.alpha = 1;
+            await Task.Delay(TimeSpan.FromSeconds(durationTime));
+        }
+        isPlaying = false;
+        //onEnable();
+        GameManager._instance.timer = 0;
+        GameManager.getInstance().script_StartUI.passHorror();
+        //image.sprite = originImage;
+    }
 }

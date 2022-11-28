@@ -49,6 +49,8 @@ public class LoveScenePanel : BasePanel
         cg = activeObj.GetComponent<CanvasGroup>();
         originImage= Resources.Load<Sprite>("BaseScene");
 
+        AudioMgr.Instance.playLoveBGM();
+
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Ball").onClick.AddListener(ballClick);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Ring").onClick.AddListener(ringClick);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Book").onClick.AddListener(bookClick);
@@ -77,13 +79,13 @@ public class LoveScenePanel : BasePanel
         if (curState == null)
         {
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点牌子");
-            pass(sprites, 2);
+            pass(sprites);
 
             curState = dicState["Sign"];
 
-            await Task.Delay(TimeSpan.FromSeconds(4.5f));
+            await Task.Delay(TimeSpan.FromSeconds(6.5f));
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/换箭");
-            fali(sprites, 2);
+            pass(sprites);
 
         }
 
@@ -94,7 +96,7 @@ public class LoveScenePanel : BasePanel
         if (curState == null)
         {
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点课本");
-            pass(sprites, 2);
+            pass(sprites);
 
             curState = dicState["Book"];
 
@@ -102,9 +104,9 @@ public class LoveScenePanel : BasePanel
         else if (curState.name == "Sign")
         {
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/换箭");
-            fali(sprites, 2);
+            fali(sprites);
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点牌子+点课本");
-            fali(sprites, 2);
+            fali(sprites);
 
             curState = dicState["Book"];
         }
@@ -114,13 +116,10 @@ public class LoveScenePanel : BasePanel
     {
         if (curState == null)
         {
-
             curState = dicState["Ball"];
 
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点球");
-            pass(sprites, 2);
-
-
+            pass(sprites);
         }
         else if (curState.name == "Sign")
         {
@@ -128,9 +127,9 @@ public class LoveScenePanel : BasePanel
             curState = dicState["Ball"];
 
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/换箭");
-            pass(sprites, 2);
+            pass(sprites);
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点牌子+点球");
-            fali(sprites, 2);
+            fali(sprites);
 
         }
 
@@ -143,7 +142,7 @@ public class LoveScenePanel : BasePanel
             curState = dicState["Ring"];
 
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点上课铃");
-            fali(sprites, 2);
+            fali(sprites);
 
 
         }
@@ -153,10 +152,34 @@ public class LoveScenePanel : BasePanel
             curState = dicState["Ring"];
 
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点牌子+点上课铃");
-            pass(sprites, 2);
-
+            success(sprites, 2);
         }
 
+    }
+    public async void success(Sprite[] sprites, float durationTime=0.1f)
+    {
+        //if (isPlaying) return;
+        isPlaying = true;
+       
+        foreach (var item in sprites)
+        {
+
+            cg.alpha = 0;
+            await Task.Delay(TimeSpan.FromSeconds(durationTime));
+
+            lock(image.sprite)
+            {
+                image.sprite = item;
+            }
+            
+
+            cg.alpha = 1;
+            await Task.Delay(TimeSpan.FromSeconds(durationTime));
+        }
+        isPlaying = false;
+        //onEnable();
+        GameManager._instance.timer = 0;
+        GameManager.getInstance().script_StartUI.passLove();
     }
     #endregion
 }

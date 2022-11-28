@@ -33,6 +33,8 @@ public class BasePanel
     public virtual void onStart()
     {
         UIMethod.AddOrGetComponent<CanvasGroup>(activeObj).interactable = true;
+        AudioMgr.Instance.playChangeClip();
+        GameManager.getInstance().script_StartUI.clear(true);
     }
     public virtual void onEnable()
     {
@@ -47,64 +49,61 @@ public class BasePanel
     {
         UIMethod.AddOrGetComponent<CanvasGroup>(activeObj).interactable = false;
 
+        AudioMgr.Instance.stop();
+        GameManager.getInstance().script_StartUI.clear(false);
     }
     #region play
-    public async void fali(Sprite[] sprites, float durationTime)
+    public async void fali(Sprite[] sprites, float durationTime=0.1f)
     {
-        //onDestory();
+        if (isPlaying) return;
         isPlaying = true;
         foreach (var item in sprites)
         {
 
-            cg.DOFade(0, durationTime);
+            cg.alpha = 0;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
 
-            cg.DOFade(1, durationTime);
+            cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
         }
-
-        //onStart();
         restart(durationTime);
         GameManager._instance.timer = 0;
         isPlaying = false;
-        //image.sprite = originImage;
     }
-    public virtual async void restart(float durationTime)
+    public virtual async void restart(float durationTime=0.1f)
     {
         //onDestory();
-        cg.DOFade(0, durationTime);
+        if (isPlaying) return;
+        cg.alpha = 0;
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
         image.sprite = originImage;
 
-        cg.DOFade(1, durationTime);
+        cg.alpha = 1;
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
         curState = null;
         //onEnable();
     }
-    public async void pass(Sprite[] sprites, float durationTime)
+    public virtual async void pass(Sprite[] sprites, float durationTime=0.1f)
     {
-        //onDestory();
         isPlaying = true;
         foreach (var item in sprites)
         {
 
-            cg.DOFade(0, durationTime);
+            cg.alpha = 0;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
 
-            cg.DOFade(1, durationTime);
+            cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
         }
         isPlaying = false;
-        //onEnable();
         GameManager._instance.timer = 0;
-        //image.sprite = originImage;
     }
-
+    
     #endregion
 }
