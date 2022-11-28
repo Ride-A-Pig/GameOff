@@ -55,7 +55,7 @@ public class BasePanel
     #region play
     public async void fali(Sprite[] sprites, float durationTime=2f)
     {
-        if (isPlaying) return;
+        //if (isPlaying) return;
         isPlaying = true;
         foreach (var item in sprites)
         {
@@ -75,7 +75,7 @@ public class BasePanel
     public virtual async void restart(float durationTime=2f)
     {
         //onDestory();
-        if (isPlaying) return;
+        //if (isPlaying) return;
         cg.alpha = 0;
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
 

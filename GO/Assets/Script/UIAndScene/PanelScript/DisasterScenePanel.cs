@@ -161,7 +161,9 @@ public class DisasterScenePanel : BasePanel
         {
             transition("Protagonist", "灾难片动画/点木板/点主角/preposition");
             pass(sprites,2);
+            isPlaying = true;
             await Task.Delay(TimeSpan.FromSeconds(4));
+            isPlaying = false;
         }
 
     }
