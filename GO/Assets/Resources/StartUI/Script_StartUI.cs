@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class Script_StartUI : MonoBehaviour
 {
@@ -11,9 +12,23 @@ public class Script_StartUI : MonoBehaviour
     [SerializeField] GameObject EmailPage;
     [SerializeField] GameObject RemotePage;
     [SerializeField] AudioSource SFX;
+    [SerializeField] public Button[] Level_Buttons;
+    [SerializeField] public bool[] Level_Active = { true, false, false };
+    [SerializeField] public GameObject[] Emails;
+    [SerializeField] public bool[] Email_Active = { true, true, false, false, false };
+
     bool bTurnOffPanel = false;
     void Start()
     {
+        for(int i = 0; i < Emails.Length; i++)
+        {
+            Emails[i].SetActive(Email_Active[i]);
+        }
+        for(int i = 0; i < Level_Buttons.Length; i++)
+        {
+            Level_Buttons[i].interactable = Level_Active[i];
+        }
+        RemotePage.SetActive(false);
         TurnOffPanel.SetActive(false);
         BrowserPage.SetActive(false);
         EmailPage.SetActive(false);
@@ -93,6 +108,21 @@ public class Script_StartUI : MonoBehaviour
     private void Play_SFX_Clicked()
     {
         SFX.Play();
+    }
+
+    public void OnClicked_Horror()
+    {
+        Debug.Log("Open Horror Level");
+    }
+
+    public void OnCLicked_Romance()
+    {
+        Debug.Log("Open Romance Level");
+    }
+
+    public void OnCLicked_Disaster()
+    {
+        Debug.Log("Open Disaster Level");
     }
 
 }

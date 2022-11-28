@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EmailCard : MonoBehaviour
 {
-    [SerializeField] string topic_text = "Hello";
+    [SerializeField] string topic_text;
     [SerializeField] string content_text = "Nice to meet you";
     [SerializeField] TMPro.TextMeshProUGUI topic;
     [SerializeField] TMPro.TextMeshProUGUI content;
