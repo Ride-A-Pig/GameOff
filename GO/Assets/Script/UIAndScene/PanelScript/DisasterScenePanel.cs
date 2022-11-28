@@ -139,7 +139,7 @@ public class DisasterScenePanel : BasePanel
             }
         }
     }
-    public void protagonistClick()
+    public async void protagonistClick()
     {
         if (curState == null)
         {
@@ -161,6 +161,7 @@ public class DisasterScenePanel : BasePanel
         {
             transition("Protagonist", "灾难片动画/点木板/点主角/preposition");
             pass(sprites,2);
+            await Task.Delay(TimeSpan.FromSeconds(4));
         }
 
     }
@@ -199,7 +200,7 @@ public class DisasterScenePanel : BasePanel
 
         sprites = Resources.LoadAll<Sprite>(path);
     }
-    public override async void restart(float durationTime=0.1f)
+    public override async void restart(float durationTime=2f)
     {
         isPlaying = true;
 
@@ -220,7 +221,7 @@ public class DisasterScenePanel : BasePanel
         curState = null;
         GameManager._instance.timer = 0;
     }
-    public async void success(Sprite[] sprites, float durationTime=0.1f)
+    public async void success(Sprite[] sprites, float durationTime=2f)
     {
         isPlaying = true;
         foreach (var item in sprites)

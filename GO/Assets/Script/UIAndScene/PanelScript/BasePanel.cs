@@ -53,7 +53,7 @@ public class BasePanel
         GameManager.getInstance().script_StartUI.clear(false);
     }
     #region play
-    public async void fali(Sprite[] sprites, float durationTime=0.1f)
+    public async void fali(Sprite[] sprites, float durationTime=2f)
     {
         if (isPlaying) return;
         isPlaying = true;
@@ -72,7 +72,7 @@ public class BasePanel
         GameManager._instance.timer = 0;
         isPlaying = false;
     }
-    public virtual async void restart(float durationTime=0.1f)
+    public virtual async void restart(float durationTime=2f)
     {
         //onDestory();
         if (isPlaying) return;
@@ -87,7 +87,7 @@ public class BasePanel
         curState = null;
         //onEnable();
     }
-    public virtual async void pass(Sprite[] sprites, float durationTime=0.1f)
+    public virtual async void pass(Sprite[] sprites, float durationTime=2f)
     {
         isPlaying = true;
         foreach (var item in sprites)

@@ -156,7 +156,7 @@ public class LoveScenePanel : BasePanel
         }
 
     }
-    public async void success(Sprite[] sprites, float durationTime=0.1f)
+    public async void success(Sprite[] sprites, float durationTime=2f)
     {
         //if (isPlaying) return;
         isPlaying = true;
