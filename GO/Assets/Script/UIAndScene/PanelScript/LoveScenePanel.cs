@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -78,13 +78,13 @@ public class LoveScenePanel : BasePanel
     {
         if (curState == null)
         {
-            sprites = Resources.LoadAll<Sprite>("Áµ°®½á¾Ö2/µãÅÆ×Ó");
+            sprites = Resources.LoadAll<Sprite>("æ‹çˆ±ç»“å±€2/ç‚¹ç‰Œå­");
             pass(sprites);
 
             curState = dicState["Sign"];
 
             await Task.Delay(TimeSpan.FromSeconds(6.5f));
-            sprites = Resources.LoadAll<Sprite>("Áµ°®½á¾Ö2/»»¼ı");
+            sprites = Resources.LoadAll<Sprite>("æ‹çˆ±ç»“å±€2/æ¢ç®­");
             pass(sprites);
 
         }
@@ -95,7 +95,7 @@ public class LoveScenePanel : BasePanel
     {
         if (curState == null)
         {
-            sprites = Resources.LoadAll<Sprite>("Áµ°®½á¾Ö2/µã¿Î±¾");
+            sprites = Resources.LoadAll<Sprite>("æ‹çˆ±ç»“å±€2/ç‚¹è¯¾æœ¬");
             pass(sprites);
 
             curState = dicState["Book"];
@@ -103,9 +103,9 @@ public class LoveScenePanel : BasePanel
         }
         else if (curState.name == "Sign")
         {
-            sprites = Resources.LoadAll<Sprite>("Áµ°®½á¾Ö2/»»¼ı");
+            sprites = Resources.LoadAll<Sprite>("æ‹çˆ±ç»“å±€2/æ¢ç®­");
             fali(sprites);
-            sprites = Resources.LoadAll<Sprite>("Áµ°®½á¾Ö2/µãÅÆ×Ó+µã¿Î±¾");
+            sprites = Resources.LoadAll<Sprite>("æ‹çˆ±ç»“å±€2/ç‚¹ç‰Œå­+ç‚¹è¯¾æœ¬");
             fali(sprites);
 
             curState = dicState["Book"];
@@ -118,7 +118,7 @@ public class LoveScenePanel : BasePanel
         {
             curState = dicState["Ball"];
 
-            sprites = Resources.LoadAll<Sprite>("Áµ°®½á¾Ö2/µãÇò");
+            sprites = Resources.LoadAll<Sprite>("æ‹çˆ±ç»“å±€2/ç‚¹çƒ");
             pass(sprites);
         }
         else if (curState.name == "Sign")
@@ -126,9 +126,9 @@ public class LoveScenePanel : BasePanel
 
             curState = dicState["Ball"];
 
-            sprites = Resources.LoadAll<Sprite>("Áµ°®½á¾Ö2/»»¼ı");
+            sprites = Resources.LoadAll<Sprite>("æ‹çˆ±ç»“å±€2/æ¢ç®­");
             pass(sprites);
-            sprites = Resources.LoadAll<Sprite>("Áµ°®½á¾Ö2/µãÅÆ×Ó+µãÇò");
+            sprites = Resources.LoadAll<Sprite>("æ‹çˆ±ç»“å±€2/ç‚¹ç‰Œå­+ç‚¹çƒ");
             fali(sprites);
 
         }
@@ -141,7 +141,7 @@ public class LoveScenePanel : BasePanel
 
             curState = dicState["Ring"];
 
-            sprites = Resources.LoadAll<Sprite>("Áµ°®½á¾Ö2/µãÉÏ¿ÎÁå");
+            sprites = Resources.LoadAll<Sprite>("æ‹çˆ±ç»“å±€2/ç‚¹ä¸Šè¯¾é“ƒ");
             fali(sprites);
 
 
@@ -151,7 +151,7 @@ public class LoveScenePanel : BasePanel
 
             curState = dicState["Ring"];
 
-            sprites = Resources.LoadAll<Sprite>("Áµ°®½á¾Ö2/µãÅÆ×Ó+µãÉÏ¿ÎÁå");
+            sprites = Resources.LoadAll<Sprite>("æ‹çˆ±ç»“å±€2/ç‚¹ç‰Œå­+ç‚¹ä¸Šè¯¾é“ƒ");
             success(sprites);
         }
 

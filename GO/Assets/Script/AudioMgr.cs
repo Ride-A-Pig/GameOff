@@ -1,8 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// ÒôÆµ¹ÜÀí
+/// éŸ³é¢‘ç®¡ç†
 /// </summary>
 public class AudioMgr : MonoBehaviour
 {
@@ -40,30 +40,30 @@ public class AudioMgr : MonoBehaviour
         bgmSource.Play();
     }
     /// <summary>
-    /// ±íÊÀ½çÒôÀÖ
+    /// è¡¨ä¸–ç•ŒéŸ³ä¹
     /// </summary>
     public void playLoveBGM()
     {
-        playBGM("°®ÇéÒôÀÖ");
+        playBGM("çˆ±æƒ…éŸ³ä¹");
     }
     public void playHorrorBGM()
     {
-        playBGM("¿Ö²ÀÒôÀÖ");
+        playBGM("ææ€–éŸ³ä¹");
     }
     public void playDisasterBGM()
     {
-        playBGM("ÔÖÄÑÒôÀÖ");
+        playBGM("ç¾éš¾éŸ³ä¹");
     }
     public void playChangeClip()
     {
-        playClip("³¡¾°ÇĞ»»");
+        playClip("åœºæ™¯åˆ‡æ¢");
     }
     public void stop()
     {
         bgmSource.Stop();
     }
     /// <summary>
-    /// ²¥·ÅÒôĞ§
+    /// æ’­æ”¾éŸ³æ•ˆ
     /// </summary>
     /// <param name="name"></param>
     public void playClip(string name)

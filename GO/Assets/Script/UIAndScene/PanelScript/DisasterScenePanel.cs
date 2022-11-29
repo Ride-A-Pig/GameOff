@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,7 +37,7 @@ public class DisasterScenePanel : BasePanel
 
         image = UIMethod.AddOrGetComponentInChildren<Image>(activeObj, "Bg");
         cg = activeObj.GetComponent<CanvasGroup>();
-        originImage = Resources.Load<Sprite>("ÔÖÄÑÆ¬¶¯»­/»ù´¡¹Ø¿¨/apocalypse_base_scene_2");
+        originImage = Resources.Load<Sprite>("ç¾éš¾ç‰‡åŠ¨ç”»/åŸºç¡€å…³å¡/apocalypse_base_scene_2");
 
         AudioMgr.Instance.playDisasterBGM();
 
@@ -69,13 +69,13 @@ public class DisasterScenePanel : BasePanel
     {
         if (curState == null)
         {
-            transition("Plank", "ÔÖÄÑÆ¬¶¯»­/µãÄ¾°å/Plank");
+            transition("Plank", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹æœ¨æ¿/Plank");
             pass(sprites);
 
         }
         else if (curState.name == "Door")
         {
-            transition("Plank", "ÔÖÄÑÆ¬¶¯»­/µãÃÅ/µãÄ¾°å");
+            transition("Plank", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹é—¨/ç‚¹æœ¨æ¿");
             fali(sprites);
         }
 
@@ -84,7 +84,7 @@ public class DisasterScenePanel : BasePanel
     {
         if (curState == null)
         {
-            transition("Door", "ÔÖÄÑÆ¬¶¯»­/µãÃÅ/µãÃÅ»ù´¡");
+            transition("Door", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹é—¨/ç‚¹é—¨åŸºç¡€");
             pass(sprites);
 
         }
@@ -94,7 +94,7 @@ public class DisasterScenePanel : BasePanel
             {
                 a = true;
                 if (isPlaying) return;
-                transition("Door", "ÔÖÄÑÆ¬¶¯»­/µãÄ¾°å/µãÖ÷½Ç/µÚÒ»ÕÅÍ¼½áÊøÖ®Ç°µã»÷ÃÅ°å");
+                transition("Door", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹æœ¨æ¿/ç‚¹ä¸»è§’/ç¬¬ä¸€å¼ å›¾ç»“æŸä¹‹å‰ç‚¹å‡»é—¨æ¿");
                 fali(sprites);
             }
         }
@@ -104,18 +104,18 @@ public class DisasterScenePanel : BasePanel
     {
         if (curState == null)
         {
-            transition("Bulb", "ÔÖÄÑÆ¬¶¯»­/µãµÆÅİ/Bulb");
+            transition("Bulb", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹ç¯æ³¡/Bulb");
             pass(sprites);
 
         }
         else if (curState.name == "Plank")
         {
-            transition("Bulb", "ÔÖÄÑÆ¬¶¯»­/µãÄ¾°å/µãµÆÅİ");
+            transition("Bulb", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹æœ¨æ¿/ç‚¹ç¯æ³¡");
             fali(sprites);
         }
         else if (curState.name == "Door")
         {
-            transition("Bulb", "ÔÖÄÑÆ¬¶¯»­/µãÃÅ/µçµÆÅİ");
+            transition("Bulb", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹é—¨/ç”µç¯æ³¡");
             fali(sprites);
         }
         else if(curState.name== "Protagonist")
@@ -126,14 +126,14 @@ public class DisasterScenePanel : BasePanel
                 
                 a = true;
                 if (isPlaying) return;
-                transition("Bulb", "ÔÖÄÑÆ¬¶¯»­/µãÄ¾°å/µãÖ÷½Ç/µÚÒ»ÕÅ½áÊøÖ®Ç°µã»÷µõµÆ");
+                transition("Bulb", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹æœ¨æ¿/ç‚¹ä¸»è§’/ç¬¬ä¸€å¼ ç»“æŸä¹‹å‰ç‚¹å‡»åŠç¯");
                 success(sprites, 2);
                 a = false;
             }
             //else if(image.sprite.name == "apocalypse_woodplank+MC_2")
             //{
             //    if (isPlaying) return;
-            //    transition("Bulb", "ÔÖÄÑÆ¬¶¯»­/µãÄ¾°å/µãÖ÷½Ç/µÚ¶şÕÅÍ¼Ö®Ç°ÎŞ×÷Îª");
+            //    transition("Bulb", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹æœ¨æ¿/ç‚¹ä¸»è§’/ç¬¬äºŒå¼ å›¾ä¹‹å‰æ— ä½œä¸º");
             //    fali(sprites);
             //}
         }
@@ -142,23 +142,23 @@ public class DisasterScenePanel : BasePanel
     {
         if (curState == null)
         {
-            transition("Protagonist", "ÔÖÄÑÆ¬¶¯»­/µãÖ÷½Ç");
+            transition("Protagonist", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹ä¸»è§’");
             fali(sprites);
 
         }
         else if(curState.name == "Bulb")
         {
-            transition("Protagonist", "ÔÖÄÑÆ¬¶¯»­/µãµÆÅİ/µãÖ÷½Ç");
+            transition("Protagonist", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹ç¯æ³¡/ç‚¹ä¸»è§’");
             fali(sprites);
         }
         else if (curState.name == "Door")
         {
-            transition("Protagonist", "ÔÖÄÑÆ¬¶¯»­/µãÃÅ/µãÖ÷½Ç");
+            transition("Protagonist", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹é—¨/ç‚¹ä¸»è§’");
             fali(sprites);
         }
         else if (curState.name == "Plank")
         {
-            transition("Protagonist", "ÔÖÄÑÆ¬¶¯»­/µãÄ¾°å/µãÖ÷½Ç/preposition");
+            transition("Protagonist", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹æœ¨æ¿/ç‚¹ä¸»è§’/preposition");
             pass(sprites,2);
             
         }
@@ -168,28 +168,28 @@ public class DisasterScenePanel : BasePanel
     {
         if (curState == null)
         {
-            transition("DoNothing", "ÔÖÄÑÆ¬¶¯»­/ÎŞ×÷Îª");
+            transition("DoNothing", "ç¾éš¾ç‰‡åŠ¨ç”»/æ— ä½œä¸º");
             fali(sprites);
 
         }
         else if (curState.name == "Bulb")
         {
-            transition("DoNothing", "ÔÖÄÑÆ¬¶¯»­/µãµÆÅİ/ÎŞ×÷Îª");
+            transition("DoNothing", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹ç¯æ³¡/æ— ä½œä¸º");
             fali(sprites);
         }
         else if (curState.name == "Door")
         {
-            transition("DoNothing", "ÔÖÄÑÆ¬¶¯»­/µãÃÅ/ÎŞ×÷Îª");
+            transition("DoNothing", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹é—¨/æ— ä½œä¸º");
             fali(sprites);
         }
         else if (curState.name == "Plank")
         {
-            transition("DoNothing", "ÔÖÄÑÆ¬¶¯»­/µãÄ¾°å/ÎŞ×÷Îª");
+            transition("DoNothing", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹æœ¨æ¿/æ— ä½œä¸º");
             fali(sprites);
         }
         else if (curState.name == "Protagonist")
         {
-            transition("DoNothing", "ÔÖÄÑÆ¬¶¯»­/µãÄ¾°å/µãÖ÷½Ç/µÚ¶şÕÅÍ¼Ö®Ç°ÎŞ×÷Îª");
+            transition("DoNothing", "ç¾éš¾ç‰‡åŠ¨ç”»/ç‚¹æœ¨æ¿/ç‚¹ä¸»è§’/ç¬¬äºŒå¼ å›¾ä¹‹å‰æ— ä½œä¸º");
             fali(sprites);
         }
     }
@@ -203,7 +203,7 @@ public class DisasterScenePanel : BasePanel
     {
         isPlaying = true;
 
-        sprites = Resources.LoadAll<Sprite>("ÔÖÄÑÆ¬¶¯»­/»ù´¡¹Ø¿¨");
+        sprites = Resources.LoadAll<Sprite>("ç¾éš¾ç‰‡åŠ¨ç”»/åŸºç¡€å…³å¡");
         foreach (var item in sprites)
         {
 
