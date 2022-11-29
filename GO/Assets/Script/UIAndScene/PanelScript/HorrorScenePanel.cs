@@ -130,7 +130,7 @@ public class HorrorScenePanel : BasePanel
 
     }
     #endregion
-    public async void success(Sprite[] sprites, float durationTime=0.2f)
+    public async void success(Sprite[] sprites, float durationTime=2f)
     {
         //onDestory();
         if (isPlaying) return;
