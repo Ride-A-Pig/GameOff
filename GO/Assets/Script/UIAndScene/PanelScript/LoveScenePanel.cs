@@ -171,7 +171,7 @@ public class LoveScenePanel : BasePanel
             {
                 image.sprite = item;
             }
-            
+            AudioMgr.Instance.playChangeClip();
 
             cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));

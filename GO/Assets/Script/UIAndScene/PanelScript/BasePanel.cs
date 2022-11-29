@@ -64,11 +64,13 @@ public class BasePanel
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
+            AudioMgr.Instance.playChangeClip();
 
             cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
         }
         restart(durationTime);
+
     }
     public virtual async void restart(float durationTime=2f)
     {
@@ -78,6 +80,7 @@ public class BasePanel
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
         image.sprite = originImage;
+        AudioMgr.Instance.playChangeClip();
 
         cg.alpha = 1;
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
@@ -97,6 +100,7 @@ public class BasePanel
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
+            AudioMgr.Instance.playChangeClip();
 
             cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));

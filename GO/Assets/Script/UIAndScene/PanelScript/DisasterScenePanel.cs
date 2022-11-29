@@ -211,6 +211,7 @@ public class DisasterScenePanel : BasePanel
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
+            AudioMgr.Instance.playChangeClip();
 
             cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
@@ -230,6 +231,7 @@ public class DisasterScenePanel : BasePanel
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
+            AudioMgr.Instance.playChangeClip();
 
             cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));

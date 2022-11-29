@@ -143,6 +143,7 @@ public class HorrorScenePanel : BasePanel
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
+            AudioMgr.Instance.playChangeClip();
 
             //cg.DOFade(1, durationTime);
             cg.alpha = 1;
