@@ -69,13 +69,11 @@ public class BasePanel
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
         }
         restart(durationTime);
-        GameManager._instance.timer = 0;
-        isPlaying = false;
     }
     public virtual async void restart(float durationTime=2f)
     {
-        //onDestory();
-        //if (isPlaying) return;
+        
+        isPlaying = true;
         cg.alpha = 0;
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
@@ -85,14 +83,16 @@ public class BasePanel
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
         curState = null;
-        //onEnable();
+        isPlaying = false;
+        GameManager._instance.timer = 0;
     }
     public virtual async void pass(Sprite[] sprites, float durationTime=2f)
     {
         isPlaying = true;
+        GameManager._instance.timer = 0;
         foreach (var item in sprites)
         {
-
+            GameManager._instance.timer = 0;
             cg.alpha = 0;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 

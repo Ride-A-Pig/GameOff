@@ -59,11 +59,16 @@ public class GameManager : MonoBehaviour
         {
             timer = 0;
         }
-        Debug.Log(timer);
-        if (timer>interval)
+        //Debug.Log(timer);
+        if (disasterScenePanel!=null&&timer>interval&&!disasterScenePanel.isPlaying)
         {
             disasterScenePanel.doNothing();
             timer = 0;
+        }
+        if(disasterScenePanel!=null&& disasterScenePanel.a&& !disasterScenePanel.isPlaying)
+        {
+            disasterScenePanel.bulbClick();
+            //disasterScenePanel.a = false;
         }
     }
 }

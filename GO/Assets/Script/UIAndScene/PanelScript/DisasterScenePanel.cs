@@ -94,7 +94,6 @@ public class DisasterScenePanel : BasePanel
             {
                 a = true;
                 if (isPlaying) return;
-                curTask.Dispose();
                 transition("Door", "灾难片动画/点木板/点主角/第一张图结束之前点击门板");
                 fali(sprites);
             }
@@ -121,25 +120,25 @@ public class DisasterScenePanel : BasePanel
         }
         else if(curState.name== "Protagonist")
         {
-            //Debug.Log(image.sprite.name);
+            Debug.Log(image.sprite.name);
             if (image.sprite.name == "apocalypse_woodplank+MC_1"||a)
             {
+                
                 a = true;
                 if (isPlaying) return;
                 transition("Bulb", "灾难片动画/点木板/点主角/第一张结束之前点击吊灯");
                 success(sprites, 2);
-                
+                a = false;
             }
-            else if(image.sprite.name == "apocalypse_woodplank+MC_2"||a)
-            {
-                a = true;
-                if (isPlaying) return;
-                transition("Bulb", "灾难片动画/点木板/点主角/第二张图之前无作为");
-                fali(sprites);
-            }
+            //else if(image.sprite.name == "apocalypse_woodplank+MC_2")
+            //{
+            //    if (isPlaying) return;
+            //    transition("Bulb", "灾难片动画/点木板/点主角/第二张图之前无作为");
+            //    fali(sprites);
+            //}
         }
     }
-    public async void protagonistClick()
+    public  void protagonistClick()
     {
         if (curState == null)
         {
@@ -161,9 +160,7 @@ public class DisasterScenePanel : BasePanel
         {
             transition("Protagonist", "灾难片动画/点木板/点主角/preposition");
             pass(sprites,2);
-            isPlaying = true;
-            await Task.Delay(TimeSpan.FromSeconds(4));
-            isPlaying = false;
+            
         }
 
     }
@@ -225,6 +222,7 @@ public class DisasterScenePanel : BasePanel
     }
     public async void success(Sprite[] sprites, float durationTime=2f)
     {
+        GameManager.getInstance().disasterScenePanel = null;
         isPlaying = true;
         foreach (var item in sprites)
         {
@@ -239,6 +237,6 @@ public class DisasterScenePanel : BasePanel
         isPlaying = false;
         GameManager._instance.timer = 0;
         GameManager.getInstance().script_StartUI.passDisaster();
-        GameManager.getInstance().disasterScenePanel = null;
+        
     }
 }

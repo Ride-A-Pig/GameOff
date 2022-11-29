@@ -152,11 +152,11 @@ public class LoveScenePanel : BasePanel
             curState = dicState["Ring"];
 
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点牌子+点上课铃");
-            success(sprites, 2);
+            success(sprites);
         }
 
     }
-    public async void success(Sprite[] sprites, float durationTime=2f)
+    public async void success(Sprite[] sprites, float durationTime=0.2f)
     {
         //if (isPlaying) return;
         isPlaying = true;
