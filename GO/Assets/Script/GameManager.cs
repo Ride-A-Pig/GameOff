@@ -70,6 +70,36 @@ public class GameManager : MonoBehaviour
             disasterScenePanel.bulbClick();
             //disasterScenePanel.a = false;
         }
+        BasePanel cur = null;
+        if (UIManager.getInstance().sta_ui.Count>0)
+        {
+            AudioMgr.Instance.playBg("InGameBackground");
+            cur = UIManager.getInstance().sta_ui.Peek();
+            if(!(cur is DisasterScenePanel))
+            {
+                if (cur.isPlaying)
+                {
+                    cur.cg.interactable = false;
+                }
+                else
+                {
+                    cur.cg.interactable = true;
+                }
+            }
+            else
+            {
+                if(cur.a&&!cur.isPlaying)
+                {
+                    cur.a = false;
+                    (cur as DisasterScenePanel).f();
+                }
+            }
+        }
+        else
+        {
+            AudioMgr.Instance.playBg("MainMenuMusic");
+        }
+        
     }
     public void close(bool isClearAll)
     {

@@ -25,6 +25,7 @@ public class BasePanel
     public Sprite[] sprites;
     public Sprite originImage;
     public bool isPlaying=false;
+    public bool a = false;
 
     public BasePanel(UIType _uIType)
     {
@@ -65,17 +66,18 @@ public class BasePanel
         {
 
             cg.alpha = 0;
+            AudioMgr.Instance.playChangeClip();
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
-            AudioMgr.Instance.playChangeClip();
+            //AudioMgr.Instance.playChangeClip();
 
             cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
         }
         RemakePanel remakePanel = new RemakePanel();
         UIManager.getInstance().push(remakePanel);
-        Debug.Log(remakePanel);
+        //Debug.Log(remakePanel);
         remakePanel.basePanel = this;
     }
     public virtual async void restart(float durationTime=1.5f)
@@ -83,10 +85,11 @@ public class BasePanel
         
         isPlaying = true;
         cg.alpha = 0;
+        AudioMgr.Instance.playChangeClip();
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
         image.sprite = originImage;
-        AudioMgr.Instance.playChangeClip();
+        //AudioMgr.Instance.playChangeClip();
 
         cg.alpha = 1;
         await Task.Delay(TimeSpan.FromSeconds(durationTime));
@@ -103,10 +106,11 @@ public class BasePanel
         {
             GameManager._instance.timer = 0;
             cg.alpha = 0;
+            AudioMgr.Instance.playChangeClip();
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
-            AudioMgr.Instance.playChangeClip();
+            //AudioMgr.Instance.playChangeClip();
 
             cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));

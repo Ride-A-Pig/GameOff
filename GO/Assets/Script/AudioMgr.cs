@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 /// <summary>
 /// 音频管理
@@ -8,6 +10,7 @@ public class AudioMgr : MonoBehaviour
 {
     AudioSource bgmSource;
     AudioSource shotSource;
+    AudioSource bgSource;
     private static AudioMgr _instance;
     public static AudioMgr Instance
     {
@@ -24,14 +27,24 @@ public class AudioMgr : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        bgSource = gameObject.AddComponent<AudioSource>();
+        bgSource.loop = true;
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.loop = true;
         shotSource = gameObject.AddComponent<AudioSource>();
         shotSource.loop = false;
         bgmSource.volume = 0.5f;
-        shotSource.volume = 0.5f;
+        bgSource.volume = 0.5f;
+        shotSource.volume = 1.5f;
     }
-
+    public void playBg(string name)
+    {
+        AudioClip clip = Resources.Load<AudioClip>("Audio/" + name);
+        print(bgSource);
+        bgSource.clip = clip;
+        if (!bgSource.isPlaying)
+            bgSource.Play();
+    }
     public void playBGM(string name)
     {
         AudioClip clip = Resources.Load<AudioClip>("Audio/" + name);
@@ -66,8 +79,9 @@ public class AudioMgr : MonoBehaviour
     /// 播放音效
     /// </summary>
     /// <param name="name"></param>
-    public void playClip(string name)
+    public  void playClip(string name)
     {
+        
         AudioClip clip = Resources.Load<AudioClip>("Audio/" + name);
         if(!shotSource.isPlaying)
         shotSource.PlayOneShot(clip);

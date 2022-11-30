@@ -13,7 +13,7 @@ public class DisasterScenePanel : BasePanel
     public static UIType uiType = new UIType(_name, _path);
 
     public Task curTask;
-    public bool a=false;
+   
 
 
     public Dictionary<string, State> dicState = new Dictionary<string, State>
@@ -68,6 +68,8 @@ public class DisasterScenePanel : BasePanel
     }
     public void plankClick()
     {
+        if (isPlaying) return;
+
         if (curState == null)
         {
             transition("Plank", "灾难片动画/点木板/Plank");
@@ -83,6 +85,8 @@ public class DisasterScenePanel : BasePanel
     }
     public void doorClick()
     {
+        if (isPlaying) return;
+
         if (curState == null)
         {
             transition("Door", "灾难片动画/点门/点门基础");
@@ -103,6 +107,16 @@ public class DisasterScenePanel : BasePanel
     }
     public void bulbClick()
     {
+        if (curState.name == "Protagonist")
+        {
+            if (image.sprite.name == "apocalypse_woodplank+MC_1")
+            {
+                a = true;
+            }
+        }
+
+        if (isPlaying) return;
+
         if (curState == null)
         {
             transition("Bulb", "灾难片动画/点灯泡/Bulb");
@@ -122,25 +136,17 @@ public class DisasterScenePanel : BasePanel
         else if(curState.name== "Protagonist")
         {
             Debug.Log(image.sprite.name);
-            if (image.sprite.name == "apocalypse_woodplank+MC_1"||a)
+            if (image.sprite.name == "apocalypse_woodplank+MC_1")
             {
-                
-                a = true;
-                if (isPlaying) return;
-                transition("Bulb", "灾难片动画/点木板/点主角/第一张结束之前点击吊灯");
-                success(sprites);
-                a = false;
+                //transition("Bulb", "灾难片动画/点木板/点主角/第一张结束之前点击吊灯");
+                //success(sprites);
             }
-            //else if(image.sprite.name == "apocalypse_woodplank+MC_2")
-            //{
-            //    if (isPlaying) return;
-            //    transition("Bulb", "灾难片动画/点木板/点主角/第二张图之前无作为");
-            //    fali(sprites);
-            //}
         }
     }
     public  void protagonistClick()
     {
+        if (isPlaying) return;
+
         if (curState == null)
         {
             transition("Protagonist", "灾难片动画/点主角");
@@ -164,6 +170,11 @@ public class DisasterScenePanel : BasePanel
             
         }
 
+    }
+    public void f()
+    {
+        transition("Bulb", "灾难片动画/点木板/点主角/第一张结束之前点击吊灯");
+        success(sprites);
     }
     public void doNothing()
     {
@@ -196,6 +207,7 @@ public class DisasterScenePanel : BasePanel
     }
     protected void transition(string stateName,string path)
     {
+        
         curState = dicState[stateName];
 
         sprites = Resources.LoadAll<Sprite>(path);
@@ -209,10 +221,11 @@ public class DisasterScenePanel : BasePanel
         {
 
             cg.alpha = 0;
+            AudioMgr.Instance.playChangeClip();
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
-            AudioMgr.Instance.playChangeClip();
+            
 
             cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
@@ -229,10 +242,11 @@ public class DisasterScenePanel : BasePanel
         foreach (var item in sprites)
         {
             cg.alpha = 0;
+            AudioMgr.Instance.playChangeClip();
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
 
             image.sprite = item;
-            AudioMgr.Instance.playChangeClip();
+           
 
             cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
