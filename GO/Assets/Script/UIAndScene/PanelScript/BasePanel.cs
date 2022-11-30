@@ -39,11 +39,15 @@ public class BasePanel
     public virtual void onEnable()
     {
         UIMethod.AddOrGetComponent<CanvasGroup>(activeObj).interactable = true;
+        AudioMgr.Instance.playChangeClip();
+        GameManager.getInstance().script_StartUI.clear(true);
     }
 
     public virtual void onDisable()
     {
         UIMethod.AddOrGetComponent<CanvasGroup>(activeObj).interactable = false;
+        AudioMgr.Instance.stop();
+        GameManager.getInstance().script_StartUI.clear(false);
     }
     public virtual void onDestory()
     {
@@ -53,7 +57,7 @@ public class BasePanel
         GameManager.getInstance().script_StartUI.clear(false);
     }
     #region play
-    public async void fali(Sprite[] sprites, float durationTime=2f)
+    public async void fali(Sprite[] sprites, float durationTime=1.5f)
     {
         //if (isPlaying) return;
         isPlaying = true;
@@ -69,10 +73,12 @@ public class BasePanel
             cg.alpha = 1;
             await Task.Delay(TimeSpan.FromSeconds(durationTime));
         }
-        restart(durationTime);
-
+        RemakePanel remakePanel = new RemakePanel();
+        UIManager.getInstance().push(remakePanel);
+        Debug.Log(remakePanel);
+        remakePanel.basePanel = this;
     }
-    public virtual async void restart(float durationTime=2f)
+    public virtual async void restart(float durationTime=1.5f)
     {
         
         isPlaying = true;
@@ -89,7 +95,7 @@ public class BasePanel
         isPlaying = false;
         GameManager._instance.timer = 0;
     }
-    public virtual async void pass(Sprite[] sprites, float durationTime=2f)
+    public virtual async void pass(Sprite[] sprites, float durationTime=1.5f)
     {
         isPlaying = true;
         GameManager._instance.timer = 0;

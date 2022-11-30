@@ -49,6 +49,7 @@ public class HorrorScenePanel : BasePanel
 
     public override void onEnable()
     {
+        AudioMgr.Instance.playHorrorBGM();
         base.onEnable();
     }
 
@@ -60,6 +61,7 @@ public class HorrorScenePanel : BasePanel
     public override void onDestory()
     {
         base.onDestory();
+        AudioMgr.Instance.playClip("SceneSwitch_1");
     }
     
     #region ClickEvent
@@ -130,7 +132,7 @@ public class HorrorScenePanel : BasePanel
 
     }
     #endregion
-    public async void success(Sprite[] sprites, float durationTime=2f)
+    public async void success(Sprite[] sprites, float durationTime=1.5f)
     {
         //onDestory();
         if (isPlaying) return;
@@ -153,6 +155,7 @@ public class HorrorScenePanel : BasePanel
         //onEnable();
         GameManager._instance.timer = 0;
         GameManager.getInstance().script_StartUI.passHorror();
+        GameManager.getInstance().script_StartUI.RemotePage.SetActive(false);
         //image.sprite = originImage;
     }
 }

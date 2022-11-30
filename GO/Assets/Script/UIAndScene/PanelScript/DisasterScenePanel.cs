@@ -52,6 +52,7 @@ public class DisasterScenePanel : BasePanel
 
     public override void onEnable()
     {
+        AudioMgr.Instance.playDisasterBGM();
         base.onEnable();
     }
 
@@ -127,7 +128,7 @@ public class DisasterScenePanel : BasePanel
                 a = true;
                 if (isPlaying) return;
                 transition("Bulb", "灾难片动画/点木板/点主角/第一张结束之前点击吊灯");
-                success(sprites, 2);
+                success(sprites);
                 a = false;
             }
             //else if(image.sprite.name == "apocalypse_woodplank+MC_2")
@@ -159,7 +160,7 @@ public class DisasterScenePanel : BasePanel
         else if (curState.name == "Plank")
         {
             transition("Protagonist", "灾难片动画/点木板/点主角/preposition");
-            pass(sprites,2);
+            pass(sprites);
             
         }
 
@@ -199,7 +200,7 @@ public class DisasterScenePanel : BasePanel
 
         sprites = Resources.LoadAll<Sprite>(path);
     }
-    public override async void restart(float durationTime=2f)
+    public override async void restart(float durationTime=1.5f)
     {
         isPlaying = true;
 
@@ -221,7 +222,7 @@ public class DisasterScenePanel : BasePanel
         curState = null;
         GameManager._instance.timer = 0;
     }
-    public async void success(Sprite[] sprites, float durationTime=2f)
+    public async void success(Sprite[] sprites, float durationTime=1.5f)
     {
         GameManager.getInstance().disasterScenePanel = null;
         isPlaying = true;
@@ -239,6 +240,6 @@ public class DisasterScenePanel : BasePanel
         isPlaying = false;
         GameManager._instance.timer = 0;
         GameManager.getInstance().script_StartUI.passDisaster();
-        
+        GameManager.getInstance().script_StartUI.RemotePage.SetActive(false);
     }
 }

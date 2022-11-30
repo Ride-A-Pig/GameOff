@@ -60,6 +60,7 @@ public class LoveScenePanel : BasePanel
 
     public override void onEnable()
     {
+        AudioMgr.Instance.playLoveBGM();
         base.onEnable();
     }
 
@@ -71,6 +72,7 @@ public class LoveScenePanel : BasePanel
     public override void onDestory()
     {
         base.onDestory();
+        AudioMgr.Instance.playClip("SceneSwitch_1");
     }
     
     #region ClickEvent
@@ -83,7 +85,7 @@ public class LoveScenePanel : BasePanel
 
             curState = dicState["Sign"];
 
-            await Task.Delay(TimeSpan.FromSeconds(6.5f));
+            await Task.Delay(TimeSpan.FromSeconds(4.6f));
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/换箭");
             pass(sprites);
 
@@ -156,7 +158,7 @@ public class LoveScenePanel : BasePanel
         }
 
     }
-    public async void success(Sprite[] sprites, float durationTime=2f)
+    public async void success(Sprite[] sprites, float durationTime=1.5f)
     {
         //if (isPlaying) return;
         isPlaying = true;
@@ -180,6 +182,7 @@ public class LoveScenePanel : BasePanel
         //onEnable();
         GameManager._instance.timer = 0;
         GameManager.getInstance().script_StartUI.passLove();
+        GameManager.getInstance().script_StartUI.RemotePage.SetActive(false);
     }
     #endregion
 }

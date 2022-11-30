@@ -71,4 +71,8 @@ public class GameManager : MonoBehaviour
             //disasterScenePanel.a = false;
         }
     }
+    public void close(bool isClearAll)
+    {
+        UIManager.getInstance().pop(isClearAll);
+    }
 }

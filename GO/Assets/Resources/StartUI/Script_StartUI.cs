@@ -9,7 +9,7 @@ public class Script_StartUI : MonoBehaviour
     [SerializeField] GameObject TurnOffPanel;
     [SerializeField] GameObject BrowserPage;
     [SerializeField] GameObject EmailPage;
-    [SerializeField] GameObject RemotePage;
+    [SerializeField] public GameObject RemotePage;
     [SerializeField] AudioSource SFX;
     [SerializeField] public Button[] Level_Buttons;
     [SerializeField] public bool[] Level_Active = { true, false, false };
@@ -153,6 +153,7 @@ public class Script_StartUI : MonoBehaviour
     {
         UIManager.getInstance().pop(true);
         disableBtn(2, 3,true);
+
     }
     private void disableBtn(int curLevel,int nextLevel,bool isLast)
     {
