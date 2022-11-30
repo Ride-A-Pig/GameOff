@@ -85,7 +85,7 @@ public class LoveScenePanel : BasePanel
 
             curState = dicState["Sign"];
 
-            await Task.Delay(TimeSpan.FromSeconds(4.6f));
+            await Task.Delay(TimeSpan.FromSeconds(6.5f));
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/换箭");
             pass(sprites);
 

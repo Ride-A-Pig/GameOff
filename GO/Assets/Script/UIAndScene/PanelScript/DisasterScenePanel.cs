@@ -107,7 +107,7 @@ public class DisasterScenePanel : BasePanel
     }
     public void bulbClick()
     {
-        if (curState.name == "Protagonist")
+        if (curState!=null&&curState.name == "Protagonist")
         {
             if (image.sprite.name == "apocalypse_woodplank+MC_1")
             {

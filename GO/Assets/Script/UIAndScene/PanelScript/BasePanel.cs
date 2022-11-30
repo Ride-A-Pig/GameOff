@@ -34,13 +34,13 @@ public class BasePanel
     public virtual void onStart()
     {
         UIMethod.AddOrGetComponent<CanvasGroup>(activeObj).interactable = true;
-        AudioMgr.Instance.playChangeClip();
+        //AudioMgr.Instance.playChangeClip();
         GameManager.getInstance().script_StartUI.clear(true);
     }
     public virtual void onEnable()
     {
         UIMethod.AddOrGetComponent<CanvasGroup>(activeObj).interactable = true;
-        AudioMgr.Instance.playChangeClip();
+        //AudioMgr.Instance.playChangeClip();
         GameManager.getInstance().script_StartUI.clear(true);
     }
 
