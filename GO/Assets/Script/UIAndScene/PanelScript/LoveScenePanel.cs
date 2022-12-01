@@ -98,7 +98,7 @@ public class LoveScenePanel : BasePanel
         if (curState == null)
         {
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点课本");
-            pass(sprites);
+            fali(sprites);
 
             curState = dicState["Book"];
 
@@ -127,9 +127,6 @@ public class LoveScenePanel : BasePanel
         {
 
             curState = dicState["Ball"];
-
-            sprites = Resources.LoadAll<Sprite>("恋爱结局2/换箭");
-            pass(sprites);
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点牌子+点球");
             fali(sprites);
 
