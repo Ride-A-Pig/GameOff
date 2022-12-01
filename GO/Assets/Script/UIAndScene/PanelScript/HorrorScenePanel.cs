@@ -45,7 +45,7 @@ public class HorrorScenePanel : BasePanel
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Vent").onClick.AddListener(ventClick);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Water_Pipe").onClick.AddListener(waterPipeClick);
 
-        float d = 0.5f;
+        float d = 5f;
         startScene("Dialog1", d);
         await Task.Delay(TimeSpan.FromSeconds(8*d));
         Debug.Log(image.sprite);

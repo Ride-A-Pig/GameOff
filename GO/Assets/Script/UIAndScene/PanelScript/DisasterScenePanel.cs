@@ -46,7 +46,7 @@ public class DisasterScenePanel : BasePanel
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Bulb").onClick.AddListener(bulbClick);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Door").onClick.AddListener(doorClick);
 
-        float d = 0.5f;
+        float d = 5f;
         startScene("Dialog3", d);
         isPlaying = false;
         await Task.Delay(TimeSpan.FromSeconds(6*d));
