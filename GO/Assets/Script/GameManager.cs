@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         {
             AudioMgr.Instance.playBg("InGameBackground");
             cur = UIManager.getInstance().sta_ui.Peek();
-            if(!(cur is DisasterScenePanel))
+            if(!(cur is DisasterScenePanel)&& !(cur is RemakePanel))
             {
                 if (cur.isPlaying)
                 {
@@ -86,9 +86,9 @@ public class GameManager : MonoBehaviour
                     cur.cg.interactable = true;
                 }
             }
-            else
+            else if(cur is DisasterScenePanel)
             {
-                if(cur.a&&!cur.isPlaying)
+                if(cur!=null&&cur.a&&!cur.isPlaying)
                 {
                     cur.a = false;
                     (cur as DisasterScenePanel).f();

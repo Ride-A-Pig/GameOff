@@ -121,7 +121,7 @@ public class LoveScenePanel : BasePanel
             curState = dicState["Ball"];
 
             sprites = Resources.LoadAll<Sprite>("恋爱结局2/点球");
-            pass(sprites);
+            fali(sprites);
         }
         else if (curState.name == "Sign")
         {
