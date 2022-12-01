@@ -41,7 +41,7 @@ public class LoveScenePanel : BasePanel
 
     }
     
-    public override void onStart()
+    public override async void onStart()
     {
         base.onStart();
 
@@ -56,6 +56,10 @@ public class LoveScenePanel : BasePanel
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Book").onClick.AddListener(bookClick);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Sign").onClick.AddListener(signClick);
 
+        float d = 0.5f;
+        startScene("Dialog2", d);
+        await Task.Delay(TimeSpan.FromSeconds(4*d));
+        image.sprite = originImage;
     }
 
     public override void onEnable()

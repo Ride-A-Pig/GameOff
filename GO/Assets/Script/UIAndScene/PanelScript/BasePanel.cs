@@ -31,7 +31,7 @@ public class BasePanel
     {
         uIType = _uIType;
     }
-    public virtual void onStart()
+    public virtual async void onStart()
     {
         UIMethod.AddOrGetComponent<CanvasGroup>(activeObj).interactable = true;
         //AudioMgr.Instance.playChangeClip();
@@ -118,6 +118,26 @@ public class BasePanel
         isPlaying = false;
         GameManager._instance.timer = 0;
     }
-    
+    public virtual async void startScene(string s, float durationTime = 1.5f)
+    {
+        Sprite[] sprite = Resources.LoadAll<Sprite>(s);
+        isPlaying = true;
+        GameManager._instance.timer = 0;
+        foreach (var item in sprite)
+        {
+            GameManager._instance.timer = 0;
+            cg.alpha = 0;
+            AudioMgr.Instance.playChangeClip();
+            await Task.Delay(TimeSpan.FromSeconds(durationTime));
+
+            image.sprite = item;
+            //AudioMgr.Instance.playChangeClip();
+
+            cg.alpha = 1;
+            await Task.Delay(TimeSpan.FromSeconds(durationTime));
+        }
+        isPlaying = false;
+        GameManager._instance.timer = 0;
+    }
     #endregion
 }

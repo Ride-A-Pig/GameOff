@@ -29,7 +29,7 @@ public class HorrorScenePanel : BasePanel
 
     }
 
-    public override void onStart()
+    public override async void onStart()
     {
         base.onStart();
 
@@ -44,6 +44,12 @@ public class HorrorScenePanel : BasePanel
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Rat").onClick.AddListener(ratClick);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Vent").onClick.AddListener(ventClick);
         UIMethod.AddOrGetComponentInChildren<Button>(activeObj, "Water_Pipe").onClick.AddListener(waterPipeClick);
+
+        float d = 0.5f;
+        startScene("Dialog1", d);
+        await Task.Delay(TimeSpan.FromSeconds(8*d));
+        Debug.Log(image.sprite);
+        image.sprite = originImage;
 
     }
 
